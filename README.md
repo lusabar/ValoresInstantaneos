@@ -6,6 +6,13 @@
 
 ### Linux ###
 
+Clone this repository
+
+```sh
+git clone https://github.com/lusabar/LissCalc
+cd LissCalc
+```
+
 Make a build directory and change into it
 
 ```sh
