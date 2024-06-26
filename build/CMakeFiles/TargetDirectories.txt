@@ -1,9 +1,0 @@
-/home/lucas/Drive/Faculdade/Semestre IX/Monitoria/Programa/LissCalc/build/CMakeFiles/LissCalc.dir
-/home/lucas/Drive/Faculdade/Semestre IX/Monitoria/Programa/LissCalc/build/CMakeFiles/edit_cache.dir
-/home/lucas/Drive/Faculdade/Semestre IX/Monitoria/Programa/LissCalc/build/CMakeFiles/rebuild_cache.dir
-/home/lucas/Drive/Faculdade/Semestre IX/Monitoria/Programa/LissCalc/build/CMakeFiles/list_install_components.dir
-/home/lucas/Drive/Faculdade/Semestre IX/Monitoria/Programa/LissCalc/build/CMakeFiles/install.dir
-/home/lucas/Drive/Faculdade/Semestre IX/Monitoria/Programa/LissCalc/build/CMakeFiles/install/local.dir
-/home/lucas/Drive/Faculdade/Semestre IX/Monitoria/Programa/LissCalc/build/CMakeFiles/install/strip.dir
-/home/lucas/Drive/Faculdade/Semestre IX/Monitoria/Programa/LissCalc/build/CMakeFiles/LissCalc_autogen_timestamp_deps.dir
-/home/lucas/Drive/Faculdade/Semestre IX/Monitoria/Programa/LissCalc/build/CMakeFiles/LissCalc_autogen.dir
