@@ -9,6 +9,7 @@ public:
 	QVector <double> t;
 	QVector <double> voltage;
 	QVector <double> current;
+	QVector <double> power;
 	double vamp, vphase, vfreq, iamp, iphase, ifreq;
 private:
 	int n_points;

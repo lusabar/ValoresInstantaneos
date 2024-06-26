@@ -21,6 +21,14 @@ QVector<double> create_sinusoid(double amplitude, double phase, double frequency
 	return result;
 }
 
+QVector<double> elementwise_product(QVector<double> v, QVector<double> i){
+    QVector<double> result(std::size(v),0);
+    for (int x = 0; x <= std::size(v)-1; x++){
+	result[x] = v[x] * i[x];
+    }
+    return result;
+}
+
 Phasor::Phasor(double v_a, double v_phase_deg, double v_f, double i_a, double i_phase_deg, double i_f){
 
 	vamp = v_a;
@@ -36,4 +44,5 @@ Phasor::Phasor(double v_a, double v_phase_deg, double v_f, double i_a, double i_
     t = linspace(0,4*pi,n_points);
     voltage = create_sinusoid(vamp, vphase, vfreq, t);
     current = create_sinusoid(iamp, iphase, ifreq, t);
+    power = elementwise_product(voltage, current);
 }

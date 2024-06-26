@@ -51,6 +51,7 @@ void MainWindow::doPlots(){
     else{
 	MainWindow::plotVector();
     }
+    MainWindow::plotPower(phasors.t, phasors.power);
 }
 
 void MainWindow::plotSine(QVector<double> t, QVector<double> v, QVector<double> i){
@@ -63,11 +64,18 @@ void MainWindow::plotSine(QVector<double> t, QVector<double> v, QVector<double> 
     // set axes ranges, so we see all data:
     ui->sine->xAxis->setRange(0, 2*pi);
     ui->sine->yAxis->setRange(-1.2*phasors.vamp, 1.2*phasors.vamp);
+    QPen pen_v;
+    pen_v.setWidth(2);
+    pen_v.setColor(QColor(0,0,255));
+    ui->sine->graph(0)->setPen(QPen(pen_v));
     ui->sine->replot();
 
     ui->sine->addGraph(ui->sine->xAxis, ui->sine->yAxis2);
     ui->sine->graph(1)->setData(t, i);
-    ui->sine->graph(1)->setPen(QPen(Qt::red));
+    QPen pen_i;
+    pen_i.setWidth(2);
+    pen_i.setColor(QColor(255,0,0));
+    ui->sine->graph(1)->setPen(QPen(pen_i));
     ui->sine->yAxis2->setVisible(true);
 	ui->sine->yAxis2->setRange(-2*phasors.iamp, 2*phasors.iamp);
     ui->sine->yAxis2->setLabel("Corrente [A]");    
@@ -80,7 +88,10 @@ void MainWindow::plotLiss(QVector<double> t, QVector<double> v, QVector<double> 
     ui->liss->clearPlottables();
     QCPCurve *Lissajous = new QCPCurve(ui->liss->xAxis, ui->liss->yAxis);
     Lissajous->setData(t, v, i);
-    Lissajous->setPen(QPen(Qt::green));
+    QPen pen;
+    pen.setWidth(2);
+    pen.setColor(QColor(0,255,0));
+    Lissajous->setPen(QPen(pen));
     ui->liss->xAxis->setLabel("Tensão [V]");
     ui->liss->yAxis->setLabel("Corrente [A]");
     ui->liss->yAxis->setRange(-1.2*phasors.iamp, 1.2*phasors.iamp);
@@ -94,13 +105,19 @@ void MainWindow::plotVector(){
     vVector->start->setCoords(0,0);
     vVector->end->setCoords(phasors.vamp*cos(phasors.vphase), phasors.vamp*sin(phasors.vphase));
     vVector->setHead(QCPLineEnding::esSpikeArrow);
-    vVector->setPen(QPen(Qt::blue));
+    QPen pen_v;
+    pen_v.setWidth(2);
+    pen_v.setColor(QColor(0,0,255));
+    vVector->setPen(QPen(pen_v));
     
     QCPItemLine *iVector = new QCPItemLine(ui->vector);
     iVector->start->setCoords(0,0);
     iVector->end->setCoords(phasors.iamp*cos(phasors.iphase), phasors.iamp*sin(phasors.iphase));
     iVector->setHead(QCPLineEnding::esSpikeArrow);
-    iVector->setPen(QPen(Qt::red));
+    QPen pen_i;
+    pen_i.setWidth(2);
+    pen_i.setColor(QColor(255,0,0));
+    iVector->setPen(QPen(pen_i));
 
     double aux = 1*std::max(phasors.vamp, phasors.iamp);
     ui->vector->xAxis->setVisible(true);
@@ -110,6 +127,23 @@ void MainWindow::plotVector(){
 
     ui->vector->xAxis->setScaleRatio(ui->vector->yAxis,1.0);
     ui->vector->replot();
+}
+
+void MainWindow::plotPower(QVector<double> t, QVector<double> p){
+    // create graph and assign data to it: 
+    ui->power->addGraph();
+    ui->power->graph(0)->setData(t, p);
+    QPen pen;
+    pen.setWidth(2);
+    pen.setColor(QColor(255,0,255));
+    ui->power->graph(0)->setPen(QPen(pen));
+    // give the axes some labels:
+    ui->power->xAxis->setLabel("Tempo [s]");
+    ui->power->yAxis->setLabel("Potência [W]");
+    // set axes ranges, so we see all data:
+    ui->power->xAxis->setRange(0, 2*pi);
+    ui->power->yAxis->setRange(-1*phasors.vamp*phasors.iamp, 1*phasors.vamp*phasors.iamp);
+    ui->power->replot();
 }
 
 void MainWindow::reconstructPhasor(){
