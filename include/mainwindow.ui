@@ -238,9 +238,6 @@
     <property name="text">
      <string/>
     </property>
-    <property name="pixmap">
-     <pixmap>../logo.png</pixmap>
-    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
