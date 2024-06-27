@@ -85,18 +85,18 @@ void MainWindow::plotSine(QVector<double> t, QVector<double> v, QVector<double> 
 
 
 void MainWindow::plotLiss(QVector<double> t, QVector<double> v, QVector<double> i){
-    ui->liss->clearPlottables();
-    QCPCurve *Lissajous = new QCPCurve(ui->liss->xAxis, ui->liss->yAxis);
-    Lissajous->setData(t, v, i);
-    QPen pen;
-    pen.setWidth(2);
-    pen.setColor(QColor(0,255,0));
-    Lissajous->setPen(QPen(pen));
-    ui->liss->xAxis->setLabel("Tensão [V]");
-    ui->liss->yAxis->setLabel("Corrente [A]");
-    ui->liss->yAxis->setRange(-1.2*phasors.iamp, 1.2*phasors.iamp);
-    ui->liss->xAxis->setRange(-1.2*phasors.vamp, 1.2*phasors.vamp);
-    ui->liss->replot();
+	ui->liss->clearPlottables();
+	QCPCurve *Lissajous = new QCPCurve(ui->liss->xAxis, ui->liss->yAxis);
+	Lissajous->setData(t, v, i);
+	QPen pen;
+	pen.setWidth(2);
+	pen.setColor(QColor(0,255,0));
+	Lissajous->setPen(QPen(pen));
+	ui->liss->xAxis->setLabel("Tensão [V]");
+	ui->liss->yAxis->setLabel("Corrente [A]");
+	ui->liss->yAxis->setRange(-1.2*phasors.iamp, 1.2*phasors.iamp);
+	ui->liss->xAxis->setRange(-1.2*phasors.vamp, 1.2*phasors.vamp);
+	ui->liss->replot();
 }
 
 void MainWindow::plotVector(){
