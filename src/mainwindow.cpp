@@ -90,7 +90,7 @@ void MainWindow::plotLiss(QVector<double> t, QVector<double> v, QVector<double> 
 	Lissajous->setData(t, v, i);
 	QPen pen;
 	pen.setWidth(2);
-	pen.setColor(QColor(1,50,31));
+	pen.setColor(QColor(0,134,70));
 	Lissajous->setPen(QPen(pen));
 	ui->liss->xAxis->setLabel("Tensão [V]");
 	ui->liss->yAxis->setLabel("Corrente [A]");
