@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
     QPixmap pix("../logo.png");
     int w = ui->logo->width ();
     int h = ui->logo->height ();
-    ui->logo->setPixmap (pix.scaled (w,h,Qt::KeepAspectRatio));
+//  ui->logo->setPixmap (pix.scaled (w,h,Qt::KeepAspectRatio));
 
     MainWindow::doPlots();
 }
