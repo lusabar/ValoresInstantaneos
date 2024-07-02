@@ -267,7 +267,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QCheckBox" name="animar">
+   <widget class="QCheckBox" name="animate">
     <property name="geometry">
      <rect>
       <x>870</x>
@@ -286,7 +286,7 @@
    <zorder>vector</zorder>
    <zorder>logo</zorder>
    <zorder>power</zorder>
-   <zorder>animar</zorder>
+   <zorder>animate</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
