@@ -235,4 +235,3 @@ void MainWindow::on_phase_txt_editingFinished()
     ui -> phase_slider -> setValue(iphase_deg);
     doPlots();
 }
-

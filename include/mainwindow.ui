@@ -267,26 +267,12 @@
      </property>
     </widget>
    </widget>
-   <widget class="QCheckBox" name="animate">
-    <property name="geometry">
-     <rect>
-      <x>870</x>
-      <y>20</y>
-      <width>79</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Animar</string>
-    </property>
-   </widget>
    <zorder>groupBox</zorder>
    <zorder>sine</zorder>
    <zorder>liss</zorder>
    <zorder>vector</zorder>
    <zorder>logo</zorder>
    <zorder>power</zorder>
-   <zorder>animate</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
