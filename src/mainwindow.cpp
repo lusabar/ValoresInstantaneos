@@ -24,7 +24,9 @@ MainWindow::MainWindow(QWidget *parent)
     int h = ui->logo->height ();
 //  ui->logo->setPixmap (pix.scaled (w,h,Qt::KeepAspectRatio));
 
-    MainWindow::doPlots();
+	double vamp{100}, vphase_deg{0}, vfreq{1}, iamp{100}, iphase_deg{0}, ifreq{1};
+	Phasor phasors(vamp, vphase_deg, vfreq, iamp, iphase_deg, ifreq);
+	MainWindow::doPlots();
 }
 
 MainWindow::~MainWindow()
@@ -33,8 +35,6 @@ MainWindow::~MainWindow()
 }
 
 const double pi {3.14159265358979323846};
-double vamp{100}, vphase_deg{0}, vfreq{1}, iamp{100}, iphase_deg{0}, ifreq{1};
-Phasor phasors(vamp, vphase_deg, vfreq, iamp, iphase_deg, ifreq);
 
 void MainWindow::doPlots(){
     phasors.~Phasor();
