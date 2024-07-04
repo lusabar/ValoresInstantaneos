@@ -30,7 +30,7 @@ QVector<double> elementwise_product(QVector<double> v, QVector<double> i){
 }
 
 void Phasor::calculateTimeVector(){
-	n_points = ceil(std::max(vfreq, ifreq)*80);
+	n_points = ceil(std::max(vfreq, ifreq)*40);
 	t = linspace(0,2*pi,n_points);
 }
 
