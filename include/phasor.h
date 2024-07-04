@@ -10,6 +10,10 @@ public:
 	QVector <double> voltage;
 	QVector <double> current;
 	QVector <double> power;
+	void calculateTimeVector();
+	void calculateVoltageVector();
+	void calculateCurrentVector();
+	void calculatePowerVector();
 	double vamp, vphase, vfreq, iamp, iphase, ifreq;
 private:
 	int n_points;

@@ -29,6 +29,23 @@ QVector<double> elementwise_product(QVector<double> v, QVector<double> i){
     return result;
 }
 
+void Phasor::calculateTimeVector(){
+	n_points = ceil(std::max(vfreq, ifreq)*80);
+	t = linspace(0,2*pi,n_points);
+}
+
+void Phasor::calculateVoltageVector(){
+	voltage = create_sinusoid(vamp, vphase, vfreq, t);
+}
+
+void Phasor::calculateCurrentVector(){
+	current = create_sinusoid(iamp, iphase, ifreq, t);
+}
+
+void Phasor::calculatePowerVector(){
+	power = elementwise_product(voltage, current);
+}
+
 Phasor::Phasor(double v_a, double v_phase_deg, double v_f, double i_a, double i_phase_deg, double i_f){
 
 	vamp = v_a;
@@ -39,10 +56,8 @@ Phasor::Phasor(double v_a, double v_phase_deg, double v_f, double i_a, double i_
     iphase = i_phase_deg * pi / 180;
 	ifreq = i_f;
 
-	n_points = ceil(std::max(vfreq, ifreq)*80);
-
-    t = linspace(0,4*pi,n_points);
-    voltage = create_sinusoid(vamp, vphase, vfreq, t);
-    current = create_sinusoid(iamp, iphase, ifreq, t);
-    power = elementwise_product(voltage, current);
+	Phasor::calculateTimeVector();
+	Phasor::calculateVoltageVector();
+	Phasor::calculateCurrentVector();
+	Phasor::calculatePowerVector();
 }
