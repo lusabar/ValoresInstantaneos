@@ -37,8 +37,10 @@ double vamp{100}, vphase_deg{0}, vfreq{1}, iamp{100}, iphase_deg{0}, ifreq{1};
 Phasor phasors(vamp, vphase_deg, vfreq, iamp, iphase_deg, ifreq);
 
 void MainWindow::doPlots(){
-    phasors.~Phasor();
-    new(&phasors) Phasor(vamp, vphase_deg, vfreq, iamp, iphase_deg, ifreq);
+	if (phasors.frequencyChanged){
+		MainWindow::reconstructPhasor();
+		phasors.frequencyChanged = false;
+	}
     MainWindow::plotSine(phasors.t, phasors.voltage, phasors.current);
     MainWindow::plotLiss(phasors.t, phasors.voltage, phasors.current);
     if (phasors.vfreq != phasors.ifreq){
@@ -155,6 +157,8 @@ void MainWindow::on_phase_slider_valueChanged(int value)
 {
     iphase_deg = value;
     ui -> phase_txt -> setText(QString::number(iphase_deg));
+	phasors.iphase = iphase_deg*pi / 180;
+	phasors.updateCurrent();
     doPlots();
 }
 
@@ -162,6 +166,8 @@ void MainWindow::on_phase_txt_returnPressed()
 {
     iphase_deg = ui -> phase_txt -> text().toInt();
     ui -> phase_slider -> setValue(iphase_deg);
+	phasors.iphase = iphase_deg*pi / 180;
+	phasors.updateCurrent();
     doPlots();
 }
 
@@ -169,12 +175,16 @@ void MainWindow::on_phase_txt_returnPressed()
 void MainWindow::on_vamp_txt_returnPressed()
 {
     vamp = ui->vamp_txt->text().toDouble();
+	phasors.vamp = vamp;
+	phasors.updateVoltage();
     doPlots();
 }
 
 void MainWindow::on_iamp_txt_returnPressed()
 {
     iamp = ui->iamp_txt->text().toDouble();
+	phasors.iamp = iamp;
+	phasors.updateCurrent();
     doPlots();
 }
 
@@ -211,6 +221,8 @@ void MainWindow::on_freqList_currentIndexChanged(int index)
 	    break;
     }
 
+	phasors.frequencyChanged = true;
+
     MainWindow::doPlots();
 }
 
@@ -218,6 +230,8 @@ void MainWindow::on_freqList_currentIndexChanged(int index)
 void MainWindow::on_vamp_txt_editingFinished()
 {
     vamp = ui->vamp_txt->text().toDouble();
+	phasors.vamp = vamp;
+	phasors.updateVoltage();
     doPlots();
 }
 
@@ -225,6 +239,8 @@ void MainWindow::on_vamp_txt_editingFinished()
 void MainWindow::on_iamp_txt_editingFinished()
 {
     iamp = ui->iamp_txt->text().toDouble();
+	phasors.iamp = iamp;
+	phasors.updateCurrent();
     doPlots();
 }
 
@@ -233,5 +249,7 @@ void MainWindow::on_phase_txt_editingFinished()
 {
     iphase_deg = ui -> phase_txt -> text().toInt();
     ui -> phase_slider -> setValue(iphase_deg);
+	phasors.iphase = iphase_deg*pi / 180;
+	phasors.updateCurrent();
     doPlots();
 }

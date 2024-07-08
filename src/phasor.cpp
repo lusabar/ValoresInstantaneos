@@ -29,6 +29,16 @@ QVector<double> elementwise_product(QVector<double> v, QVector<double> i){
     return result;
 }
 
+void Phasor::updateVoltage(){
+	calculateVoltageVector();
+	calculatePowerVector();
+}
+
+void Phasor::updateCurrent(){
+	calculateCurrentVector();
+	calculatePowerVector();
+}
+
 void Phasor::calculateTimeVector(){
 	n_points = ceil(std::max(vfreq, ifreq)*40);
 	t = linspace(0,2*pi,n_points);
@@ -60,4 +70,6 @@ Phasor::Phasor(double v_a, double v_phase_deg, double v_f, double i_a, double i_
 	Phasor::calculateVoltageVector();
 	Phasor::calculateCurrentVector();
 	Phasor::calculatePowerVector();
+	
+	frequencyChanged = false;
 }
