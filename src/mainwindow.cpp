@@ -53,7 +53,7 @@ void MainWindow::doPlots(){
     else{
 	MainWindow::plotVector();
     }
-    MainWindow::plotPower(phasors.t, phasors.power);
+    MainWindow::plotPower(phasors.t, phasors.power, phasors.active_power);
 }
 
 void MainWindow::plotSine(QVector<double> t, QVector<double> v, QVector<double> i){
@@ -131,7 +131,7 @@ void MainWindow::plotVector(){
     ui->vector->replot();
 }
 
-void MainWindow::plotPower(QVector<double> t, QVector<double> p){
+void MainWindow::plotPower(QVector<double> t, QVector<double> p, QVector<double> active){
     // create graph and assign data to it: 
 	ui->power->clearPlottables();
 	ui->power->clearItems();
@@ -153,6 +153,17 @@ void MainWindow::plotPower(QVector<double> t, QVector<double> p){
 	}
 	else if(phasors.iphase == phasors.vphase){
 		ui->power->graph(0)->setName("Potência Instantânea = Potência Ativa");
+	}
+	else{
+		ui->power->addGraph();
+		ui->power->graph(1)->setData(t, active);
+		QPen penActive;
+		penActive.setWidth(2);
+		penActive.setColor(QColor(255,0,0));
+		ui->power->graph(1)->setPen(QPen(penActive));
+		ui->power->graph(0)->setName("Potência Instantânea");
+		ui->power->graph(1)->setName("Potência Ativa");
+//		ui->power->yAxis->setRange(-1*phasors.vamp*phasors.iamp, 1*phasors.vamp*phasors.iamp);
 	}
 
 	ui->power->legend->setVisible(true);

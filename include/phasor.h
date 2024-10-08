@@ -10,6 +10,7 @@ public:
 	QVector <double> voltage;
 	QVector <double> current;
 	QVector <double> power;
+	QVector <double> active_power;
 	bool frequencyChanged;
 	double vamp, vphase, vfreq, iamp, iphase, ifreq;
 	void updateVoltage();
