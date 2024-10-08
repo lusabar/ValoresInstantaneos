@@ -57,6 +57,8 @@ void MainWindow::doPlots(){
 }
 
 void MainWindow::plotSine(QVector<double> t, QVector<double> v, QVector<double> i){
+	ui->sine->clearPlottables();
+	ui->sine->clearItems();
     // create graph and assign data to it: 
     ui->sine->addGraph();
     ui->sine->graph(0)->setData(t, v);
@@ -70,7 +72,6 @@ void MainWindow::plotSine(QVector<double> t, QVector<double> v, QVector<double> 
     pen_v.setWidth(2);
     pen_v.setColor(QColor(0,0,255));
     ui->sine->graph(0)->setPen(QPen(pen_v));
-    ui->sine->replot();
 
     ui->sine->addGraph(ui->sine->xAxis, ui->sine->yAxis2);
     ui->sine->graph(1)->setData(t, i);
@@ -88,6 +89,7 @@ void MainWindow::plotSine(QVector<double> t, QVector<double> v, QVector<double> 
 
 void MainWindow::plotLiss(QVector<double> t, QVector<double> v, QVector<double> i){
 	ui->liss->clearPlottables();
+	ui->liss->clearItems();
 	QCPCurve *Lissajous = new QCPCurve(ui->liss->xAxis, ui->liss->yAxis);
 	Lissajous->setData(t, v, i);
 	QPen pen;
@@ -102,6 +104,7 @@ void MainWindow::plotLiss(QVector<double> t, QVector<double> v, QVector<double> 
 }
 
 void MainWindow::plotVector(){
+	ui->vector->clearPlottables();
     ui->vector->clearItems();
     QCPItemLine *vVector = new QCPItemLine(ui->vector);
     vVector->start->setCoords(0,0);
