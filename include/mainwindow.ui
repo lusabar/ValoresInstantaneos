@@ -14,7 +14,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>LissCalc</string>
+   <string>ValoresInstantaneos</string>
   </property>
   <property name="inputMethodHints">
    <set>Qt::InputMethodHint::ImhNone</set>
