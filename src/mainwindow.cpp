@@ -133,6 +133,9 @@ void MainWindow::plotVector(){
 
 void MainWindow::plotPower(QVector<double> t, QVector<double> p){
     // create graph and assign data to it: 
+	ui->power->clearPlottables();
+	ui->power->clearItems();
+	ui->power->legend->clearItems();
     ui->power->addGraph();
     ui->power->graph(0)->setData(t, p);
     QPen pen;
@@ -145,6 +148,14 @@ void MainWindow::plotPower(QVector<double> t, QVector<double> p){
     // set axes ranges, so we see all data:
     ui->power->xAxis->setRange(0, 2*pi);
     ui->power->yAxis->setRange(-1*phasors.vamp*phasors.iamp, 1*phasors.vamp*phasors.iamp);
+	if (phasors.ifreq != phasors.vfreq){
+		ui->power->graph(0)->setName("Potência Instantânea = Potência Reativa");
+	}
+	else if(phasors.iphase == phasors.vphase){
+		ui->power->graph(0)->setName("Potência Instantânea = Potência Ativa");
+	}
+
+	ui->power->legend->setVisible(true);
     ui->power->replot();
 }
 
