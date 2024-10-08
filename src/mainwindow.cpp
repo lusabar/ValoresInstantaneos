@@ -53,7 +53,7 @@ void MainWindow::doPlots(){
     else{
 	MainWindow::plotVector();
     }
-    MainWindow::plotPower(phasors.t, phasors.power, phasors.active_power);
+    MainWindow::plotPower(phasors.t, phasors.power, phasors.active_power, phasors.reactive_power);
 }
 
 void MainWindow::plotSine(QVector<double> t, QVector<double> v, QVector<double> i){
@@ -131,7 +131,7 @@ void MainWindow::plotVector(){
     ui->vector->replot();
 }
 
-void MainWindow::plotPower(QVector<double> t, QVector<double> p, QVector<double> active){
+void MainWindow::plotPower(QVector<double> t, QVector<double> p, QVector<double> active, QVector<double> reactive){
     // create graph and assign data to it: 
 	ui->power->clearPlottables();
 	ui->power->clearItems();
@@ -159,11 +159,18 @@ void MainWindow::plotPower(QVector<double> t, QVector<double> p, QVector<double>
 		ui->power->graph(1)->setData(t, active);
 		QPen penActive;
 		penActive.setWidth(2);
-		penActive.setColor(QColor(255,0,0));
+		penActive.setColor(QColor(0,255,0));
 		ui->power->graph(1)->setPen(QPen(penActive));
 		ui->power->graph(0)->setName("Potência Instantânea");
 		ui->power->graph(1)->setName("Potência Ativa");
-//		ui->power->yAxis->setRange(-1*phasors.vamp*phasors.iamp, 1*phasors.vamp*phasors.iamp);
+
+		ui->power->addGraph();
+		ui->power->graph(2)->setData(t, reactive);
+		QPen penReactive;
+		penReactive.setWidth(2);
+		penReactive.setColor(QColor(255,0,0));
+		ui->power->graph(2)->setPen(QPen(penReactive));
+		ui->power->graph(2)->setName("Potência Reativa");
 	}
 
 	ui->power->legend->setVisible(true);

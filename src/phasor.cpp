@@ -30,6 +30,15 @@ QVector<double> calculate_active_power(double iamp, double vamp, double phase, d
 	return result;
 }
 
+QVector<double> calculate_reactive_power(double iamp, double vamp, double phase, double freq, QVector<double> time){
+    QVector<double> result(std::size(time),0);
+	double amplitude = (iamp*vamp/2)*sin(phase);
+    for(int i = 0; i <= std::size(result)-1; i++){
+        result[i] = amplitude*sin(2*freq*time[i]);
+	}
+	return result;
+}
+
 QVector<double> elementwise_product(QVector<double> v, QVector<double> i){
     QVector<double> result(std::size(v),0);
     for (int x = 0; x <= std::size(v)-1; x++){
@@ -65,6 +74,7 @@ void Phasor::calculatePowerVector(){
 	power = elementwise_product(voltage, current);
 	if ((ifreq == vfreq) and (vphase != iphase)){
 		active_power = calculate_active_power(iamp, vamp, iphase, vfreq, t);
+		reactive_power = calculate_reactive_power(iamp, vamp, iphase, vfreq, t);
 	}
 }
 

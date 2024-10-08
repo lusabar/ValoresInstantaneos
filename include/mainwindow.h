@@ -34,7 +34,7 @@ private slots:
     void plotSine(QVector<double> t, QVector<double> v, QVector<double> i);
     void plotLiss(QVector<double> t, QVector<double> v, QVector<double> i);
     void plotVector();
-    void plotPower(QVector<double> t, QVector<double> p, QVector<double> active);
+    void plotPower(QVector<double> t, QVector<double> p, QVector<double> active, QVector<double> reactive);
 
     void on_iamp_txt_returnPressed();
 
