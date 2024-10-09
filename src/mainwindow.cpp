@@ -103,6 +103,8 @@ void MainWindow::plotLiss(QVector<double> t, QVector<double> v, QVector<double> 
 	ui->liss->yAxis->setLabel("Corrente [A]");
 	ui->liss->yAxis->setRange(-1.2*phasors.iamp, 1.2*phasors.iamp);
 	ui->liss->xAxis->setRange(-1.2*phasors.vamp, 1.2*phasors.vamp);
+	ui->liss->plottable(0)->setName("Curva de Lissajous");
+	ui->liss->legend->setVisible(true);
 	ui->liss->replot();
 }
 
