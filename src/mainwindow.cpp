@@ -45,9 +45,10 @@ void MainWindow::doPlots(){
     MainWindow::plotLiss(phasors.t, phasors.voltage, phasors.current);
     if (phasors.vfreq != phasors.ifreq){
 	ui->vector->clearItems();
-//	ui->vector->clearPlottables();
+	ui->vector->clearPlottables();
 	ui->vector->xAxis->setVisible(false);
 	ui->vector->yAxis->setVisible(false);
+	ui->vector->legend->setVisible(false);
 	ui->vector->replot();
     }
     else{
