@@ -1,6 +1,6 @@
-# LissCalc
+# ValoresInstantaneos
 
-**LissCalc** is a simple application that aims to provide graphical representations of electric magnitudes various forms, namely: time-domain sinusoids, phasor diagram, Lissajous curve and instantaneous power.
+**ValoresInstantaneos** is a simple application that aims to provide graphical representations of electric magnitudes various forms, namely: time-domain sinusoids, phasor diagram, Lissajous curve and instantaneous power.
 
 ## Compile from source ##
 
@@ -9,8 +9,8 @@
 Clone this repository
 
 ```sh
-git clone https://github.com/lusabar/LissCalc
-cd LissCalc
+git clone https://github.com/lusabar/ValoresInstantaneos
+cd ValoresInstantaneos
 ```
 
 Make a build directory and change into it
