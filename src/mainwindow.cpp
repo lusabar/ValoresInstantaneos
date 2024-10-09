@@ -82,6 +82,9 @@ void MainWindow::plotSine(QVector<double> t, QVector<double> v, QVector<double> 
     ui->sine->yAxis2->setVisible(true);
 	ui->sine->yAxis2->setRange(-2*phasors.iamp, 2*phasors.iamp);
     ui->sine->yAxis2->setLabel("Corrente [A]");    
+	ui->sine->graph(0)->setName("Tensão");
+	ui->sine->graph(1)->setName("Corrente");
+	ui->sine->legend->setVisible(true);
 	ui->sine->replot();
 }
 
@@ -131,6 +134,14 @@ void MainWindow::plotVector(){
     ui->vector->xAxis->setRange(0, aux*1.2);
 
     ui->vector->xAxis->setScaleRatio(ui->vector->yAxis,1.0);
+	// The following code is a hack and should be changed
+	ui->vector->addGraph();
+    ui->vector->graph(0)->setPen(QPen(pen_v));
+    ui->vector->graph(0)->setName("Tensão");
+	ui->vector->addGraph();
+    ui->vector->graph(1)->setPen(QPen(pen_i));
+    ui->vector->graph(1)->setName("Corrente");
+	ui->vector->legend->setVisible(true);
     ui->vector->replot();
 }
 
