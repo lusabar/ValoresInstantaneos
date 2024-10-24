@@ -74,6 +74,10 @@ void MainWindow::plotSine(QVector<double> t, QVector<double> v, QVector<double> 
     pen_v.setColor(QColor(0,0,255));
     ui->sine->graph(0)->setPen(QPen(pen_v));
 
+	// Sets x axis ticks as a function of pi
+	QSharedPointer<QCPAxisTickerPi> piTicker(new QCPAxisTickerPi);
+	ui->sine->xAxis->setTicker(piTicker);
+
     ui->sine->addGraph(ui->sine->xAxis, ui->sine->yAxis2);
     ui->sine->graph(1)->setData(t, i);
     QPen pen_i;
