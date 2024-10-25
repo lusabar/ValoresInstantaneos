@@ -64,7 +64,7 @@ void MainWindow::plotSine(QVector<double> t, QVector<double> v, QVector<double> 
     ui->sine->addGraph();
     ui->sine->graph(0)->setData(t, v);
     // give the axes some labels:
-    ui->sine->xAxis->setLabel("Tempo [s]");
+    ui->sine->xAxis->setLabel("Ângulo [rad]");
     ui->sine->yAxis->setLabel("Tensão [V]");
     // set axes ranges, so we see all data:
     ui->sine->xAxis->setRange(0, 2*pi);
@@ -77,6 +77,7 @@ void MainWindow::plotSine(QVector<double> t, QVector<double> v, QVector<double> 
 	// Sets x axis ticks as a function of pi
 	QSharedPointer<QCPAxisTickerPi> piTicker(new QCPAxisTickerPi);
 	ui->sine->xAxis->setTicker(piTicker);
+	piTicker->setTickCount(7);
 
     ui->sine->addGraph(ui->sine->xAxis, ui->sine->yAxis2);
     ui->sine->graph(1)->setData(t, i);
