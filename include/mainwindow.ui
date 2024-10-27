@@ -26,8 +26,8 @@
    <widget class="QCustomPlot" name="sine" native="true">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>350</y>
+      <x>440</x>
+      <y>20</y>
       <width>411</width>
       <height>321</height>
      </rect>
@@ -46,7 +46,7 @@
    <widget class="QCustomPlot" name="vector" native="true">
     <property name="geometry">
      <rect>
-      <x>440</x>
+      <x>860</x>
       <y>20</y>
       <width>411</width>
       <height>321</height>
