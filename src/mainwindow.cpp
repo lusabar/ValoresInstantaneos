@@ -181,7 +181,7 @@ void MainWindow::plotPower(QVector<double> t, QVector<double> p, QVector<double>
 		ui->power->graph(1)->setData(t, active);
 		QPen penActive;
 		penActive.setWidth(2);
-		penActive.setColor(QColor(0,255,0));
+		penActive.setColor(QColor(0,134,70));
 		ui->power->graph(1)->setPen(QPen(penActive));
 		ui->power->graph(0)->setName("Potência Instantânea");
 		ui->power->graph(1)->setName("Potência Ativa");
