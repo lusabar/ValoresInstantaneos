@@ -58,7 +58,7 @@ void Phasor::updateCurrent(){
 }
 
 void Phasor::calculateTimeVector(){
-	n_points = ceil(std::max(vfreq, ifreq)*40);
+	n_points = ceil(std::max(vfreq, ifreq)*60);
 	t = linspace(0,2*pi,n_points);
 }
 
