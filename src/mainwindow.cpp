@@ -363,3 +363,17 @@ void MainWindow::on_actionExportarComo_triggered(){
 		ui->power->saveBmp(fileNamePower);
 	}
 }
+
+
+void MainWindow::on_actionSobre_triggered(){
+	QString aboutTxt = "ValoresInstantaneos"
+		"\n"
+		"Copyright (c) 2024 lusabar"
+		"\n"
+		"Aplicação simples que traça as"
+		" senoides, o diagrama fasorial,"
+		" a curva de Lissajous e as componentes"
+		" da potência elétrica com base em dados"
+		" inseridos pelo usuário.";
+	QMessageBox::about(this, "Sobre", aboutTxt);
+}

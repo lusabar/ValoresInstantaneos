@@ -48,6 +48,8 @@ private slots:
 
 	void on_actionExportarComo_triggered();
 
+	void on_actionSobre_triggered();
+
 private:
     Ui::MainWindow *ui;
 };
