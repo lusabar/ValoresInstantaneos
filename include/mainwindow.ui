@@ -287,6 +287,7 @@
     <property name="title">
      <string>Arquivo</string>
     </property>
+    <addaction name="actionExportarComo"/>
    </widget>
    <widget class="QMenu" name="menuAjuda">
     <property name="title">
@@ -365,6 +366,11 @@
   <action name="actionSobre">
    <property name="text">
     <string>Sobre</string>
+   </property>
+  </action>
+  <action name="actionExportarComo">
+   <property name="text">
+    <string>Exportar como...</string>
    </property>
   </action>
  </widget>
