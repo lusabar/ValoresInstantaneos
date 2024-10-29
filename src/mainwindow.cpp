@@ -160,10 +160,16 @@ void MainWindow::plotPower(QVector<double> t, QVector<double> p, QVector<double>
 	ui->power->legend->clearItems();
     ui->power->addGraph();
     ui->power->graph(0)->setData(t, p);
+	// Declares pens
     QPen pen;
     pen.setWidth(2);
     pen.setColor(QColor(255,0,255));
-    ui->power->graph(0)->setPen(QPen(pen));
+	QPen penActive;
+	penActive.setWidth(2);
+	penActive.setColor(QColor(0,134,70));
+	QPen penReactive;
+	penReactive.setWidth(2);
+	penReactive.setColor(QColor(255,0,0));
     // give the axes some labels:
     ui->power->xAxis->setLabel("Tempo [s]");
     ui->power->yAxis->setLabel("Potência [W]");
@@ -172,25 +178,27 @@ void MainWindow::plotPower(QVector<double> t, QVector<double> p, QVector<double>
     ui->power->yAxis->setRange(-1*phasors.vamp*phasors.iamp, 1*phasors.vamp*phasors.iamp);
 	if (phasors.ifreq != phasors.vfreq){
 		ui->power->graph(0)->setName("Potência Instantânea = Potência Reativa");
+		ui->power->graph(0)->setPen(QPen(penReactive));
 	}
 	else if(phasors.iphase == phasors.vphase){
 		ui->power->graph(0)->setName("Potência Instantânea = Potência Ativa");
+		ui->power->graph(0)->setPen(QPen(penActive));
+	}
+	else if(iphase_deg == 90 or iphase_deg == -90){
+		ui->power->graph(0)->setName("Potência Instantânea = Potência Reativa");
+		ui->power->graph(0)->setPen(QPen(penReactive));
 	}
 	else{
+		ui->power->graph(0)->setPen(QPen(pen));
+
 		ui->power->addGraph();
 		ui->power->graph(1)->setData(t, active);
-		QPen penActive;
-		penActive.setWidth(2);
-		penActive.setColor(QColor(0,134,70));
 		ui->power->graph(1)->setPen(QPen(penActive));
 		ui->power->graph(0)->setName("Potência Instantânea");
 		ui->power->graph(1)->setName("Potência Ativa");
 
 		ui->power->addGraph();
 		ui->power->graph(2)->setData(t, reactive);
-		QPen penReactive;
-		penReactive.setWidth(2);
-		penReactive.setColor(QColor(255,0,0));
 		ui->power->graph(2)->setPen(QPen(penReactive));
 		ui->power->graph(2)->setName("Potência Reativa");
 	}
