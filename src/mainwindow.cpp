@@ -5,6 +5,8 @@
 #include "../include/phasor.h"
 #include <QVector>
 #include <iostream>
+#include <QDebug>
+#include <string>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -311,4 +313,53 @@ void MainWindow::on_phase_txt_editingFinished()
 	phasors.iphase = iphase_deg*pi / 180;
 	phasors.updateCurrent();
     doPlots();
+}
+
+void MainWindow::on_actionExportarComo_triggered(){
+	QString fileName = QFileDialog::getSaveFileName(this, tr("Salvar Arquivo"),
+                           "/home/jana/untitled.pdf",
+                           tr("Arquivo PDF (*.pdf);;Arquivo de imagem (*.png *.bmp *.jpg)"));
+	QString fileExtension;
+	fileExtension.resize(3);
+	fileExtension[2] = fileName[fileName.size()-1] ;
+	fileExtension[1] = fileName[fileName.size()-2] ;
+	fileExtension[0] = fileName[fileName.size()-3] ;
+
+	QString fileNameSine = fileName;
+	fileNameSine.replace(fileNameSine.size()-4, 1, "-sine.");
+	QFile sineFile(fileNameSine);
+	QString fileNamePhasor = fileName;
+	fileNamePhasor.replace(fileNamePhasor.size()-4, 1, "-phasor.");
+	QFile phasorFile(fileNamePhasor);
+	QString fileNameLiss = fileName;
+	fileNameLiss.replace(fileNameLiss.size()-4, 1, "-liss.");
+	QFile lissFile(fileNameLiss);
+	QString fileNamePower = fileName;
+	fileNamePower.replace(fileNamePower.size()-4, 1, "-power.");
+	QFile powerFile(fileNamePower);
+
+	if (fileExtension == "pdf"){
+		ui->sine->savePdf(fileNameSine);
+		ui->vector->savePdf(fileNamePhasor);
+		ui->liss->savePdf(fileNameLiss);
+		ui->power->savePdf(fileNamePower);
+	}
+	else if(fileExtension == "png"){
+		ui->sine->savePng(fileNameSine);
+		ui->vector->savePng(fileNamePhasor);
+		ui->liss->savePng(fileNameLiss);
+		ui->power->savePng(fileNamePower);
+	}
+	else if(fileExtension == "jpg"){
+		ui->sine->saveJpg(fileNameSine);
+		ui->vector->saveJpg(fileNamePhasor);
+		ui->liss->saveJpg(fileNameLiss);
+		ui->power->saveJpg(fileNamePower);
+	}
+	else if(fileExtension == "bmp"){
+		ui->sine->saveBmp(fileNameSine);
+		ui->vector->saveBmp(fileNamePhasor);
+		ui->liss->saveBmp(fileNameLiss);
+		ui->power->saveBmp(fileNamePower);
+	}
 }

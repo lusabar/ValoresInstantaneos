@@ -46,6 +46,8 @@ private slots:
 
     void on_phase_txt_editingFinished();
 
+	void on_actionExportarComo_triggered();
+
 private:
     Ui::MainWindow *ui;
 };
