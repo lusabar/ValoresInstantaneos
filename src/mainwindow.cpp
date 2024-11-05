@@ -214,6 +214,22 @@ void MainWindow::reconstructPhasor(){
     new(&phasors) Phasor(vamp, vphase_deg, vfreq, iamp, iphase_deg, ifreq);
 }
 
+// If needed, adds a number to the end of the file
+// to avoid overwriting
+QString MainWindow::renameFile(QString fileName){
+	int n = 0;
+	while (true){
+		if (!QFile::exists(fileName)){
+			break;
+		}
+		else{
+			n++;
+			fileName.replace(fileName.size()-4, 1, "-" + QString::number(n) + ".");
+		}
+	}
+	return fileName;
+}
+
 void MainWindow::on_phase_slider_valueChanged(int value)
 {
     iphase_deg = value;
@@ -338,6 +354,13 @@ void MainWindow::on_actionExportarComo_triggered(){
 	fileNamePower.replace(fileNamePower.size()-4, 1, "-power.");
 	QFile powerFile(fileNamePower);
 
+	// Checks if files exists and renames them accordingly
+	fileNameSine = MainWindow::renameFile(fileNameSine);
+	fileNamePhasor = MainWindow::renameFile(fileNamePhasor);
+	fileNameLiss = MainWindow::renameFile(fileNameLiss);
+	fileNamePower = MainWindow::renameFile(fileNamePower);
+
+	// Saves files
 	if (fileExtension == "pdf"){
 		ui->sine->savePdf(fileNameSine);
 		ui->vector->savePdf(fileNamePhasor);

@@ -36,6 +36,8 @@ private slots:
     void plotVector();
     void plotPower(QVector<double> t, QVector<double> p, QVector<double> active, QVector<double> reactive);
 
+	QString renameFile(QString fileName);
+
     void on_iamp_txt_returnPressed();
 
     void on_freqList_currentIndexChanged(int index);
