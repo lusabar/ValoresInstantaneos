@@ -21,11 +21,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->vamp_txt->setText("100");
     ui->iamp_txt->setText("100");
 
-    QPixmap pix("../logo.png");
-    int w = ui->logo->width ();
-    int h = ui->logo->height ();
-//  ui->logo->setPixmap (pix.scaled (w,h,Qt::KeepAspectRatio));
-
 	MainWindow::doPlots();
 }
 
