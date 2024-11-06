@@ -22,6 +22,7 @@ set(PROJECT_SOURCES
         include/qcustomplot.h
 	include/phasor.h
         include/mainwindow.ui
+		include/resources.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
