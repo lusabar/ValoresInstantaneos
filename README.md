@@ -21,7 +21,7 @@ sudo dpkg -i ValoresInstantaneos-1.0.0-amd64-DebianLinux.deb
 sudo apt -f install
 ```
 
-### Windows 10/11###
+### Windows 10/11 ###
 
 Download and execute the installer or unzip the avaliable .zip portable file and execute the program.
 
